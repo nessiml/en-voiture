@@ -204,7 +204,6 @@ namespace EnVoiture
         {
             return bounds.IntersectsWith(new Rectangle(cursorPosition, new Size(1, 1)));
         }
-
         public void Avancer()
         {
             Location = new Point(Location.X, Location.Y - 1);
