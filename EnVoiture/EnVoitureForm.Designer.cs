@@ -68,6 +68,7 @@
             // 
             // enVoiturePanel
             // 
+            this.enVoiturePanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.enVoiturePanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.enVoiturePanel.Location = new System.Drawing.Point(143, 3);
             this.enVoiturePanel.Name = "enVoiturePanel";
