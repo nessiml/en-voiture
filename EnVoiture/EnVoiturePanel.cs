@@ -34,9 +34,9 @@ namespace EnVoiture
             DoubleBuffered = true;
 
             this.roadUsers = new List<RoadUserWidget>();
-            roadUsers.Add(new CarWidget(0, 0, 10, 20, 80));
-            roadUsers.Add(new CarWidget(150, 150, 10, 20, 80));
-            roadUsers.Add(new CarWidget(240, 240, 10, 20, 80));
+            roadUsers.Add(new CarWidget(0, 0, 5, 10, 80));
+            roadUsers.Add(new CarWidget(150, 150, 5, 10, 80));
+            roadUsers.Add(new CarWidget(240, 240, 5, 10, 80));
             voiture = (roadUsers[0] as CarWidget).Car;
             this.Ways = new List<WayWidget>();
 
