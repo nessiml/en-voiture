@@ -18,10 +18,6 @@ namespace EnVoiture
         private bool bDroite = false;
         private bool bGauche = false;
 
-        //Variables de détection de la voiture
-        private GraphicsPath _graphicsPath;
-        private Region _region;
-
         private List<WayWidget> Ways;
 
         /// <summary>
@@ -36,11 +32,11 @@ namespace EnVoiture
             this.roadUsers = new List<RoadUserWidget>();
             roadUsers.Add(new CarWidget(0, 0, 5, 10, 80));
             roadUsers.Add(new CarWidget(150, 150, 5, 10, 80));
-            roadUsers.Add(new CarWidget(240, 240, 5, 10, 80));
+            roadUsers.Add(new CarWidget(250, 250, 5, 10, 80));
             voiture = (roadUsers[0] as CarWidget).Car;
             this.Ways = new List<WayWidget>();
 
-            foreach(Way way in Way.WaysGenerator(5, 4))
+            foreach(Way way in Way.WaysGenerator(6, 5))
             {
                 this.Ways.Add(new WayWidget(way));
             }
