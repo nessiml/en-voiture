@@ -62,6 +62,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoadUser.cs" />
     <Compile Include="RoadUserWidget.cs" />
+    <Compile Include="Trottoir.cs" />
+    <Compile Include="TrottoirWidget.cs" />
     <Compile Include="Way.cs" />
     <Compile Include="Orientation.cs" />
     <Compile Include="WayWidget.cs" />
