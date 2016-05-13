@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace EnVoiture
 {
-    class WayWidget
+    public class WayWidget
     {
         public static int SIZE = 100;
         public Way Way { get; set; }
 
-        public WayWidget(Way w)
+        public WayWidget(Way way)
         {
-            Way = w;
+            Way = way;
         }
         public void Paint(Graphics g)
         {
@@ -64,6 +64,11 @@ namespace EnVoiture
                 g.DrawLine(GreyPen, point1, pointTrottoir);
                 g.DrawLine(BlackPen, point1, point2);
             }
+        }
+
+        public void PaintOnOrigin(Graphics g)
+        {
+            g.FillRectangle(Brushes.Black, new Rectangle(0, 0, 100, 100));
         }
     }
 }
