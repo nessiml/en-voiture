@@ -47,6 +47,11 @@ namespace EnVoiture
             voiture = (roadUsers[0] as CarWidget).Car;
             this.Ways = new List<WayWidget>();
 
+            foreach (Way way in Way.WaysGenerator(6, 5))
+            {
+                Ways.Add(new WayWidget(way));
+            }
+
             this.Paint += new PaintEventHandler(EnVoiture_Paint);
         }
 

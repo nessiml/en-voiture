@@ -23,7 +23,7 @@ namespace EnVoiture
             int TailleX = Way.Size.Width * SIZE;
             int TailleY = Way.Size.Height * SIZE;
 
-            g.FillRectangle(Brushes.Gray, Left, Top, TailleX, TailleY);
+            g.FillRectangle(Brushes.Green, Left, Top, TailleX, TailleY);
             Pen BlackPen = new Pen(Color.Black, 20);
             Point point2 = new Point(Left + TailleY / 2, Top + TailleY / 2);
             Point point1;
