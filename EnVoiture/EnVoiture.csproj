@@ -66,7 +66,6 @@
     <Compile Include="RoadUser.cs" />
     <Compile Include="RoadUserWidget.cs" />
     <Compile Include="Trottoir.cs" />
-    <Compile Include="TrottoirWidget.cs" />
     <Compile Include="Way.cs" />
     <Compile Include="Orientation.cs" />
     <Compile Include="WayButton.cs">
@@ -104,6 +103,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\grass.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
