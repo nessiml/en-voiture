@@ -31,8 +31,8 @@
             this.components = new System.ComponentModel.Container();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.alignment = new System.Windows.Forms.TableLayoutPanel();
-            this.placeholder = new System.Windows.Forms.Label();
             this.enVoiturePanel = new EnVoiture.EnVoiturePanel();
+            this.toolsBox = new EnVoiture.ToolsBox();
             this.alignment.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,7 +48,7 @@
             this.alignment.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.alignment.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.alignment.Controls.Add(this.enVoiturePanel, 1, 0);
-            this.alignment.Controls.Add(this.placeholder, 0, 0);
+            this.alignment.Controls.Add(this.toolsBox, 0, 0);
             this.alignment.Dock = System.Windows.Forms.DockStyle.Fill;
             this.alignment.Location = new System.Drawing.Point(0, 0);
             this.alignment.Name = "alignment";
@@ -57,23 +57,28 @@
             this.alignment.Size = new System.Drawing.Size(762, 537);
             this.alignment.TabIndex = 0;
             // 
-            // placeholder
-            // 
-            this.placeholder.AutoSize = true;
-            this.placeholder.Location = new System.Drawing.Point(3, 0);
-            this.placeholder.Name = "placeholder";
-            this.placeholder.Size = new System.Drawing.Size(134, 13);
-            this.placeholder.TabIndex = 1;
-            this.placeholder.Text = "TODO: Ajouter un menu ici";
-            // 
             // enVoiturePanel
             // 
             this.enVoiturePanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.enVoiturePanel.Location = new System.Drawing.Point(143, 3);
+            this.enVoiturePanel.Location = new System.Drawing.Point(183, 3);
             this.enVoiturePanel.Name = "enVoiturePanel";
-            this.enVoiturePanel.Size = new System.Drawing.Size(616, 531);
+            this.enVoiturePanel.Size = new System.Drawing.Size(576, 531);
             this.enVoiturePanel.TabIndex = 0;
-            this.enVoiturePanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.enVoiturePanel_MouseDown);
+            this.enVoiturePanel.ToolsBox = null;
+            this.enVoiturePanel.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EnVoitureForm_KeyDown);
+            this.enVoiturePanel.KeyUp += new System.Windows.Forms.KeyEventHandler(this.EnVoitureForm_KeyUp);
+            this.enVoiturePanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.EnVoitureForm_MouseDown);
+            // 
+            // toolsBox
+            // 
+            this.toolsBox.AutoScroll = true;
+            this.toolsBox.BackColor = System.Drawing.Color.Silver;
+            this.toolsBox.Location = new System.Drawing.Point(0, 0);
+            this.toolsBox.Margin = new System.Windows.Forms.Padding(0);
+            this.toolsBox.Name = "toolsBox";
+            this.toolsBox.Size = new System.Drawing.Size(180, 537);
+            this.toolsBox.TabIndex = 1;
+            this.toolsBox.Visible = false;
             // 
             // EnVoitureForm
             // 
@@ -85,8 +90,8 @@
             this.Text = "En Voiture !";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EnVoitureForm_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.EnVoitureForm_KeyUp);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.EnVoitureForm_MouseDown);
             this.alignment.ResumeLayout(false);
-            this.alignment.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -96,7 +101,7 @@
         private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.TableLayoutPanel alignment;
         private EnVoiturePanel enVoiturePanel;
-        private System.Windows.Forms.Label placeholder;
+        private ToolsBox toolsBox;
     }
 }
 
