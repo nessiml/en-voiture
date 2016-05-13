@@ -35,7 +35,7 @@ namespace EnVoiture
             {
                 point1 = new Point(Left + TailleX / 2,Top);
                 Point pointTrottoir = new Point(point2.X, point2.Y);
-                pointTrottoir.Offset(0, -100);
+                pointTrottoir.Offset(0, -10);
                 g.DrawLine(GreyPen, point1, pointTrottoir);
                 g.DrawLine(BlackPen, point1, point2);
 
