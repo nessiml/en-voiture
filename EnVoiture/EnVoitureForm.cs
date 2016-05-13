@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 
 namespace EnVoiture
@@ -119,7 +121,6 @@ namespace EnVoiture
         {
             enVoiturePanel.Tick(sender, e);
         }
-
         /// <summary>
         ///
         /// </summary>
@@ -127,7 +128,7 @@ namespace EnVoiture
         /// <param name="e"></param>
         private void EnVoitureForm_MouseDown(object sender, MouseEventArgs e)
         {
-            enVoiturePanel.OnMouseDown(sender ,e);
+            enVoiturePanel.OnMouseDown(sender, e);
         }
     }
 }

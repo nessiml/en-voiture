@@ -80,16 +80,6 @@
             this.toolsBox.TabIndex = 1;
             this.toolsBox.Visible = false;
             // 
-            // enVoiturePanel
-            // 
-            this.enVoiturePanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.enVoiturePanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.enVoiturePanel.Location = new System.Drawing.Point(143, 3);
-            this.enVoiturePanel.Name = "enVoiturePanel";
-            this.enVoiturePanel.Size = new System.Drawing.Size(616, 531);
-            this.enVoiturePanel.TabIndex = 0;
-            this.enVoiturePanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.EnVoitureForm_MouseDown);
-            // 
             // EnVoitureForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -100,6 +90,7 @@
             this.Text = "En Voiture !";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EnVoitureForm_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.EnVoitureForm_KeyUp);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.EnVoitureForm_MouseDown);
             this.alignment.ResumeLayout(false);
             this.ResumeLayout(false);
 
