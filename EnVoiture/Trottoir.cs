@@ -15,6 +15,19 @@ namespace EnVoiture
             RIEN
         }
 
+        public bool DetectionTrottoir ()
+        {
+            return true;
+        }
 
+        public bool DetectionRoute ()
+        {
+            return true;
+        }
+
+        public bool PositionVoiture()
+        {
+            return true;
+        }
     }
 }
