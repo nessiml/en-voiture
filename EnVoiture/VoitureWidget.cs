@@ -38,7 +38,7 @@ namespace EnVoiture
             this.Voiture = new Voiture(x, y, width, height,vMax);
         }
 
-        public override void Paint(Graphics g)
+        public override void Dessiner(Graphics g)
         {
             g.FillRectangle(new SolidBrush(this.Couleur), Voiture.Bounds);
         }
