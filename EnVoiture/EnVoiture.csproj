@@ -45,11 +45,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ToolsBox.cs">
+    <Compile Include="BoiteAOutils.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Car.cs" />
-    <Compile Include="CarWidget.cs" />
+    <Compile Include="Voiture.cs" />
     <Compile Include="EnVoitureForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,12 +65,13 @@
     <Compile Include="RoadUser.cs" />
     <Compile Include="RoadUserWidget.cs" />
     <Compile Include="Trottoir.cs" />
-    <Compile Include="Way.cs" />
+    <Compile Include="Route.cs" />
     <Compile Include="Orientation.cs" />
-    <Compile Include="WayButton.cs">
+    <Compile Include="RouteBouton.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="WayWidget.cs" />
+    <Compile Include="RouteWidget.cs" />
+    <Compile Include="VoitureWidget.cs" />
     <EmbeddedResource Include="EnVoitureForm.resx">
       <DependentUpon>EnVoitureForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -88,8 +88,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="ToolsBox.resx">
-      <DependentUpon>ToolsBox.cs</DependentUpon>
+    <EmbeddedResource Include="BoiteAOutils.resx">
+      <DependentUpon>BoiteAOutils.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
