@@ -48,6 +48,12 @@ namespace EnVoiture
             this.Ways = new List<RouteWidget>();
 
             this.Paint += new PaintEventHandler(EnVoiture_Paint);
+
+            foreach (Route route in Route.Generer(8, 6))
+            {
+                this.Ways.Add(new RouteWidget(route));
+            }
+            
         }
 
 
@@ -66,7 +72,7 @@ namespace EnVoiture
             }
             foreach (RoadUserWidget user in roadUsers)
             {
-                user.Paint(g);
+                user.Dessiner(g);
             }
         }
         public void OnKeyDown(object sender, KeyEventArgs e)
