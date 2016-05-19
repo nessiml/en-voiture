@@ -29,24 +29,40 @@ namespace EnVoiture
             Point point2 = new Point(Left + TailleY / 2, Top + TailleY / 2);
             Point point1;
 
-            g.FillEllipse(Brushes.Black, point2.X - 10, point2.Y - 10, 20, 20);
-
             if (Way.GetDictionaire.ContainsKey(Orientation.NORTH) && Way.GetDictionaire[Orientation.NORTH])
             {
                 point1 = new Point(Left + TailleX / 2,Top);
 
                 Point pointTrottoirDroite2 = new Point(point2.X, point2.Y);
                 Point pointTrottoirDroite1 = new Point(point1.X,point1.Y);
-                
-                pointTrottoirDroite2.Offset(12, -10);
-                pointTrottoirDroite1.Offset(12, 0);
 
                 Point pointTrottoirGauche2 = new Point(point2.X, point2.Y);
                 Point pointTrottoirGauche1 = new Point(point1.X, point1.Y);
 
+                pointTrottoirDroite2.Offset(12, -10);
+                pointTrottoirDroite1.Offset(12, 0);
+
                 pointTrottoirGauche2.Offset(-12, -10);
                 pointTrottoirGauche1.Offset(-12, 0);
-                
+
+                if (Way.GetDictionaire[Orientation.EAST] == false)
+                {
+                    pointTrottoirDroite2.Offset(0, 10);
+                }
+                if (Way.GetDictionaire[Orientation.WEST] == false)
+                {
+                    pointTrottoirGauche2.Offset(0, 10);
+                }
+
+                if (Way.GetDictionaire[Orientation.SOUTH] == false && Way.GetDictionaire[Orientation.EAST] == false)
+                {
+                    g.FillEllipse(Brushes.Gray, point2.X - 10, point2.Y - 10, 25, 25);
+                }
+
+                if (Way.GetDictionaire[Orientation.SOUTH] == false && Way.GetDictionaire[Orientation.WEST] == false)
+                {
+                    g.FillEllipse(Brushes.Gray, point2.X - 15, point2.Y - 10, 25, 25);
+                }
 
                 g.DrawLine(GreyPen, pointTrottoirDroite1, pointTrottoirDroite2);
                 g.DrawLine(GreyPen, pointTrottoirGauche1, pointTrottoirGauche2);
@@ -61,15 +77,34 @@ namespace EnVoiture
                 Point pointTrottoirDroite2 = new Point(point2.X, point2.Y);
                 Point pointTrottoirDroite1 = new Point(point1.X, point1.Y);
 
-                pointTrottoirDroite2.Offset(12, 10);
-                pointTrottoirDroite1.Offset(12, 0);
 
                 Point pointTrottoirGauche2 = new Point(point2.X, point2.Y);
                 Point pointTrottoirGauche1 = new Point(point1.X, point1.Y);
 
+                pointTrottoirDroite2.Offset(12, 10);
+                pointTrottoirDroite1.Offset(12, 0);
+
                 pointTrottoirGauche2.Offset(-12, 10);
                 pointTrottoirGauche1.Offset(-12, 0);
 
+                if (Way.GetDictionaire[Orientation.EAST] == false)
+                {
+                    pointTrottoirDroite2.Offset(0, -10);
+                }
+                if (Way.GetDictionaire[Orientation.WEST] == false)
+                {
+                    pointTrottoirGauche2.Offset(0, -10);
+                }
+
+                if (Way.GetDictionaire[Orientation.NORTH] == false && Way.GetDictionaire[Orientation.EAST] == false)
+                {
+                    g.FillEllipse(Brushes.Gray, point2.X - 10, point2.Y -15, 25, 25);
+                }
+
+                if (Way.GetDictionaire[Orientation.NORTH] == false && Way.GetDictionaire[Orientation.WEST] == false)
+                {
+                    g.FillEllipse(Brushes.Gray, point2.X - 15, point2.Y - 15, 25, 25);
+                }
 
                 g.DrawLine(GreyPen, pointTrottoirDroite1, pointTrottoirDroite2);
                 g.DrawLine(GreyPen, pointTrottoirGauche1, pointTrottoirGauche2);
@@ -83,15 +118,24 @@ namespace EnVoiture
                 Point pointTrottoirDroite2 = new Point(point2.X, point2.Y);
                 Point pointTrottoirDroite1 = new Point(point1.X, point1.Y);
 
-                pointTrottoirDroite2.Offset(10, 12);
-                pointTrottoirDroite1.Offset(0, 12);
 
                 Point pointTrottoirGauche2 = new Point(point2.X, point2.Y);
                 Point pointTrottoirGauche1 = new Point(point1.X, point1.Y);
 
+                pointTrottoirDroite2.Offset(10, 12);
+                pointTrottoirDroite1.Offset(0, 12);
+
                 pointTrottoirGauche2.Offset(10, -12);
                 pointTrottoirGauche1.Offset(0, -12);
 
+                if (Way.GetDictionaire[Orientation.SOUTH] == false)
+                {
+                    pointTrottoirDroite2.Offset(-10, 0);
+                }
+                if (Way.GetDictionaire[Orientation.NORTH] == false)
+                {
+                    pointTrottoirGauche2.Offset(-10, 0);
+                }
 
                 g.DrawLine(GreyPen, pointTrottoirDroite1, pointTrottoirDroite2);
                 g.DrawLine(GreyPen, pointTrottoirGauche1, pointTrottoirGauche2);
@@ -105,21 +149,32 @@ namespace EnVoiture
                 Point pointTrottoirDroite2 = new Point(point2.X, point2.Y);
                 Point pointTrottoirDroite1 = new Point(point1.X, point1.Y);
 
-                pointTrottoirDroite2.Offset(-10, 12);
-                pointTrottoirDroite1.Offset(0, 12);
 
                 Point pointTrottoirGauche2 = new Point(point2.X, point2.Y);
                 Point pointTrottoirGauche1 = new Point(point1.X, point1.Y);
 
+                pointTrottoirDroite2.Offset(-10, 12);
+                pointTrottoirDroite1.Offset(0, 12);
+
                 pointTrottoirGauche2.Offset(-10, -12);
                 pointTrottoirGauche1.Offset(0, -12);
 
+                if (Way.GetDictionaire[Orientation.SOUTH] == false)
+                {
+                    pointTrottoirDroite2.Offset(10, 0);
+                }
+                if (Way.GetDictionaire[Orientation.NORTH] == false)
+                {
+                    pointTrottoirGauche2.Offset(10, 0);
+                }
 
                 g.DrawLine(GreyPen, pointTrottoirDroite1, pointTrottoirDroite2);
                 g.DrawLine(GreyPen, pointTrottoirGauche1, pointTrottoirGauche2);
 
                 g.DrawLine(BlackPen, point1, point2);
             }
+
+            g.FillEllipse(Brushes.Black, point2.X - 10, point2.Y - 10, 20, 20);
         }
 
         public void PaintOnOrigin(Graphics g)
