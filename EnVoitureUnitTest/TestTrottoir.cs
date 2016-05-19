@@ -11,9 +11,9 @@ namespace EnVoitureUnitTest
     public class TestTrottoir
     {
         [TestMethod]
-        public void Test()
+        public void TestDetectionTrottoir()
         {
-
+            
         }
     }
 }

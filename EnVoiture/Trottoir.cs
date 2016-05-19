@@ -15,12 +15,12 @@ namespace EnVoiture
             RIEN
         }
 
-        public bool DetectionTrottoir ()
+        public bool DetectionTrottoir()
         {
             return true;
         }
 
-        public bool DetectionRoute ()
+        public bool DetectionRoute()
         {
             return true;
         }
