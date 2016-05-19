@@ -51,7 +51,9 @@ namespace EnVoiture
                 g.DrawLine(GreyPen, pointTrottoirDroite1, pointTrottoirDroite2);
                 g.DrawLine(GreyPen, pointTrottoirGauche1, pointTrottoirGauche2);
                 
-                g.DrawLine(BlackPen, point1, point2);
+                //g.DrawLine(BlackPen, point1, point2);
+                g.FillRectangle(Brushes.Pink, point1.X-10, point2.Y-50, 20, 50);
+
 
             }
             if (Route.GetDictionaire.ContainsKey(Orientation.SOUTH) && Route.GetDictionaire[Orientation.SOUTH])
