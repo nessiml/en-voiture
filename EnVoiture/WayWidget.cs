@@ -25,7 +25,7 @@ namespace EnVoiture
 
             g.FillRectangle(Brushes.YellowGreen, Left, Top,TailleX, TailleY);
             Pen BlackPen = new Pen(Color.Black, 20);
-            Pen GreyPen = new Pen(Color.Gray, 30);
+            Pen GreyPen = new Pen(Color.Gray, 5);
             Point point2 = new Point(Left + TailleY / 2, Top + TailleY / 2);
             Point point1;
 
@@ -34,34 +34,90 @@ namespace EnVoiture
             if (Way.GetDictionaire.ContainsKey(Orientation.NORTH) && Way.GetDictionaire[Orientation.NORTH])
             {
                 point1 = new Point(Left + TailleX / 2,Top);
-                Point pointTrottoir = new Point(point2.X, point2.Y);
-                pointTrottoir.Offset(0, -10);
-                g.DrawLine(GreyPen, point1, pointTrottoir);
+
+                Point pointTrottoirDroite2 = new Point(point2.X, point2.Y);
+                Point pointTrottoirDroite1 = new Point(point1.X,point1.Y);
+                
+                pointTrottoirDroite2.Offset(12, -10);
+                pointTrottoirDroite1.Offset(12, 0);
+
+                Point pointTrottoirGauche2 = new Point(point2.X, point2.Y);
+                Point pointTrottoirGauche1 = new Point(point1.X, point1.Y);
+
+                pointTrottoirGauche2.Offset(-12, -10);
+                pointTrottoirGauche1.Offset(-12, 0);
+                
+
+                g.DrawLine(GreyPen, pointTrottoirDroite1, pointTrottoirDroite2);
+                g.DrawLine(GreyPen, pointTrottoirGauche1, pointTrottoirGauche2);
+                
                 g.DrawLine(BlackPen, point1, point2);
 
             }
             if (Way.GetDictionaire.ContainsKey(Orientation.SOUTH) && Way.GetDictionaire[Orientation.SOUTH])
             {
                 point1 = new Point(Left + TailleX / 2, Top + TailleY);
-                Point pointTrottoir = new Point(point2.X, point2.Y);
-                pointTrottoir.Offset(0, 10);
-                g.DrawLine(GreyPen, point1, pointTrottoir);
+
+                Point pointTrottoirDroite2 = new Point(point2.X, point2.Y);
+                Point pointTrottoirDroite1 = new Point(point1.X, point1.Y);
+
+                pointTrottoirDroite2.Offset(12, 10);
+                pointTrottoirDroite1.Offset(12, 0);
+
+                Point pointTrottoirGauche2 = new Point(point2.X, point2.Y);
+                Point pointTrottoirGauche1 = new Point(point1.X, point1.Y);
+
+                pointTrottoirGauche2.Offset(-12, 10);
+                pointTrottoirGauche1.Offset(-12, 0);
+
+
+                g.DrawLine(GreyPen, pointTrottoirDroite1, pointTrottoirDroite2);
+                g.DrawLine(GreyPen, pointTrottoirGauche1, pointTrottoirGauche2);
+
                 g.DrawLine(BlackPen, point1, point2);
             }
             if (Way.GetDictionaire.ContainsKey(Orientation.EAST) && Way.GetDictionaire[Orientation.EAST])
             {
                 point1 = new Point(Left + TailleX, Top + TailleY / 2);
-                Point pointTrottoir = new Point(point2.X, point2.Y);
-                pointTrottoir.Offset(10, 0);
-                g.DrawLine(GreyPen, point1, pointTrottoir);
+
+                Point pointTrottoirDroite2 = new Point(point2.X, point2.Y);
+                Point pointTrottoirDroite1 = new Point(point1.X, point1.Y);
+
+                pointTrottoirDroite2.Offset(10, 12);
+                pointTrottoirDroite1.Offset(0, 12);
+
+                Point pointTrottoirGauche2 = new Point(point2.X, point2.Y);
+                Point pointTrottoirGauche1 = new Point(point1.X, point1.Y);
+
+                pointTrottoirGauche2.Offset(10, -12);
+                pointTrottoirGauche1.Offset(0, -12);
+
+
+                g.DrawLine(GreyPen, pointTrottoirDroite1, pointTrottoirDroite2);
+                g.DrawLine(GreyPen, pointTrottoirGauche1, pointTrottoirGauche2);
+
                 g.DrawLine(BlackPen, point1, point2);
             }
             if (Way.GetDictionaire.ContainsKey(Orientation.WEST) && Way.GetDictionaire[Orientation.WEST])
             {
                 point1 = new Point(Left, Top + TailleY / 2);
-                Point pointTrottoir = new Point(point2.X, point2.Y);
-                pointTrottoir.Offset(-10, 0);
-                g.DrawLine(GreyPen, point1, pointTrottoir);
+
+                Point pointTrottoirDroite2 = new Point(point2.X, point2.Y);
+                Point pointTrottoirDroite1 = new Point(point1.X, point1.Y);
+
+                pointTrottoirDroite2.Offset(-10, 12);
+                pointTrottoirDroite1.Offset(0, 12);
+
+                Point pointTrottoirGauche2 = new Point(point2.X, point2.Y);
+                Point pointTrottoirGauche1 = new Point(point1.X, point1.Y);
+
+                pointTrottoirGauche2.Offset(-10, -12);
+                pointTrottoirGauche1.Offset(0, -12);
+
+
+                g.DrawLine(GreyPen, pointTrottoirDroite1, pointTrottoirDroite2);
+                g.DrawLine(GreyPen, pointTrottoirGauche1, pointTrottoirGauche2);
+
                 g.DrawLine(BlackPen, point1, point2);
             }
         }
