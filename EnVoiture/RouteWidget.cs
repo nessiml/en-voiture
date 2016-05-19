@@ -7,21 +7,21 @@ using System.Threading.Tasks;
 
 namespace EnVoiture
 {
-    public class WayWidget
+    public class RouteWidget
     {
         public static int SIZE = 100;
-        public Way Way { get; set; }
+        public Route Route { get; set; }
 
-        public WayWidget(Way way)
+        public RouteWidget(Route way)
         {
-            Way = way;
+            Route = way;
         }
-        public void Paint(Graphics g)
+        public void Dessiner(Graphics g)
         {
-            int Left = Way.Location.X * SIZE;
-            int Top = Way.Location.Y * SIZE;
-            int TailleX = Way.Size.Width * SIZE;
-            int TailleY = Way.Size.Height * SIZE;
+            int Left = Route.Position.X * SIZE;
+            int Top = Route.Position.Y * SIZE;
+            int TailleX = Route.Taille.Width * SIZE;
+            int TailleY = Route.Taille.Height * SIZE;
 
             g.FillRectangle(Brushes.YellowGreen, Left, Top,TailleX, TailleY);
             Pen BlackPen = new Pen(Color.Black, 20);
@@ -29,7 +29,7 @@ namespace EnVoiture
             Point point2 = new Point(Left + TailleY / 2, Top + TailleY / 2);
             Point point1;
 
-            if (Way.GetDictionaire.ContainsKey(Orientation.NORTH) && Way.GetDictionaire[Orientation.NORTH])
+            if (Route.GetDictionaire.ContainsKey(Orientation.NORTH) && Route.GetDictionaire[Orientation.NORTH])
             {
                 point1 = new Point(Left + TailleX / 2,Top);
 
@@ -45,21 +45,21 @@ namespace EnVoiture
                 pointTrottoirGauche2.Offset(-12, -10);
                 pointTrottoirGauche1.Offset(-12, 0);
 
-                if (Way.GetDictionaire[Orientation.EAST] == false)
+                if (Route.GetDictionaire[Orientation.EAST] == false)
                 {
                     pointTrottoirDroite2.Offset(0, 10);
                 }
-                if (Way.GetDictionaire[Orientation.WEST] == false)
+                if (Route.GetDictionaire[Orientation.WEST] == false)
                 {
                     pointTrottoirGauche2.Offset(0, 10);
                 }
 
-                if (Way.GetDictionaire[Orientation.SOUTH] == false && Way.GetDictionaire[Orientation.EAST] == false)
+                if (Route.GetDictionaire[Orientation.SOUTH] == false && Route.GetDictionaire[Orientation.EAST] == false)
                 {
                     g.FillEllipse(Brushes.Gray, point2.X - 10, point2.Y - 10, 25, 25);
                 }
 
-                if (Way.GetDictionaire[Orientation.SOUTH] == false && Way.GetDictionaire[Orientation.WEST] == false)
+                if (Route.GetDictionaire[Orientation.SOUTH] == false && Route.GetDictionaire[Orientation.WEST] == false)
                 {
                     g.FillEllipse(Brushes.Gray, point2.X - 15, point2.Y - 10, 25, 25);
                 }
@@ -70,7 +70,7 @@ namespace EnVoiture
                 g.DrawLine(BlackPen, point1, point2);
 
             }
-            if (Way.GetDictionaire.ContainsKey(Orientation.SOUTH) && Way.GetDictionaire[Orientation.SOUTH])
+            if (Route.GetDictionaire.ContainsKey(Orientation.SOUTH) && Route.GetDictionaire[Orientation.SOUTH])
             {
                 point1 = new Point(Left + TailleX / 2, Top + TailleY);
 
@@ -87,21 +87,21 @@ namespace EnVoiture
                 pointTrottoirGauche2.Offset(-12, 10);
                 pointTrottoirGauche1.Offset(-12, 0);
 
-                if (Way.GetDictionaire[Orientation.EAST] == false)
+                if (Route.GetDictionaire[Orientation.EAST] == false)
                 {
                     pointTrottoirDroite2.Offset(0, -10);
                 }
-                if (Way.GetDictionaire[Orientation.WEST] == false)
+                if (Route.GetDictionaire[Orientation.WEST] == false)
                 {
                     pointTrottoirGauche2.Offset(0, -10);
                 }
 
-                if (Way.GetDictionaire[Orientation.NORTH] == false && Way.GetDictionaire[Orientation.EAST] == false)
+                if (Route.GetDictionaire[Orientation.NORTH] == false && Route.GetDictionaire[Orientation.EAST] == false)
                 {
                     g.FillEllipse(Brushes.Gray, point2.X - 10, point2.Y -15, 25, 25);
                 }
 
-                if (Way.GetDictionaire[Orientation.NORTH] == false && Way.GetDictionaire[Orientation.WEST] == false)
+                if (Route.GetDictionaire[Orientation.NORTH] == false && Route.GetDictionaire[Orientation.WEST] == false)
                 {
                     g.FillEllipse(Brushes.Gray, point2.X - 15, point2.Y - 15, 25, 25);
                 }
@@ -111,7 +111,7 @@ namespace EnVoiture
 
                 g.DrawLine(BlackPen, point1, point2);
             }
-            if (Way.GetDictionaire.ContainsKey(Orientation.EAST) && Way.GetDictionaire[Orientation.EAST])
+            if (Route.GetDictionaire.ContainsKey(Orientation.EAST) && Route.GetDictionaire[Orientation.EAST])
             {
                 point1 = new Point(Left + TailleX, Top + TailleY / 2);
 
@@ -128,11 +128,11 @@ namespace EnVoiture
                 pointTrottoirGauche2.Offset(10, -12);
                 pointTrottoirGauche1.Offset(0, -12);
 
-                if (Way.GetDictionaire[Orientation.SOUTH] == false)
+                if (Route.GetDictionaire[Orientation.SOUTH] == false)
                 {
                     pointTrottoirDroite2.Offset(-10, 0);
                 }
-                if (Way.GetDictionaire[Orientation.NORTH] == false)
+                if (Route.GetDictionaire[Orientation.NORTH] == false)
                 {
                     pointTrottoirGauche2.Offset(-10, 0);
                 }
@@ -142,7 +142,7 @@ namespace EnVoiture
 
                 g.DrawLine(BlackPen, point1, point2);
             }
-            if (Way.GetDictionaire.ContainsKey(Orientation.WEST) && Way.GetDictionaire[Orientation.WEST])
+            if (Route.GetDictionaire.ContainsKey(Orientation.WEST) && Route.GetDictionaire[Orientation.WEST])
             {
                 point1 = new Point(Left, Top + TailleY / 2);
 
@@ -159,11 +159,11 @@ namespace EnVoiture
                 pointTrottoirGauche2.Offset(-10, -12);
                 pointTrottoirGauche1.Offset(0, -12);
 
-                if (Way.GetDictionaire[Orientation.SOUTH] == false)
+                if (Route.GetDictionaire[Orientation.SOUTH] == false)
                 {
                     pointTrottoirDroite2.Offset(10, 0);
                 }
-                if (Way.GetDictionaire[Orientation.NORTH] == false)
+                if (Route.GetDictionaire[Orientation.NORTH] == false)
                 {
                     pointTrottoirGauche2.Offset(10, 0);
                 }
@@ -177,7 +177,7 @@ namespace EnVoiture
             g.FillEllipse(Brushes.Black, point2.X - 10, point2.Y - 10, 20, 20);
         }
 
-        public void PaintOnOrigin(Graphics g)
+        public void DessinerSurOrigine(Graphics g)
         {
             g.FillRectangle(Brushes.Black, new Rectangle(0, 0, 100, 100));
         }
