@@ -7,6 +7,7 @@ namespace EnVoiture
     /// </summary>
     public class Voiture : RoadUser
     {
+        
         /// <summary>
         /// Constructeur permettant de définir la position et la taille d'une voiture d'après un rectangle.
         /// </summary>
@@ -24,6 +25,7 @@ namespace EnVoiture
             : base(x, y, width, height,0.0,vMax) 
         {
         }
+        
 
     }
 }

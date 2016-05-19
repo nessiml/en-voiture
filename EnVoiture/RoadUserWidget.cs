@@ -8,6 +8,8 @@ namespace EnVoiture
 {
     public abstract class RoadUserWidget
     {
+        public Color Couleur { get; set; }
+
         /// <summary>
         /// Permet de dessiner l'usager sur un context graphic.
         /// </summary>
