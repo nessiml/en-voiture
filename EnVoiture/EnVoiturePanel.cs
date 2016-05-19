@@ -147,6 +147,24 @@ namespace EnVoiture
                 Point p = PointToClient(Cursor.Position);
                 _hoverWayWidget.Route.Position = new Point(p.X / 100, p.Y / 100);
             }
+            
+            foreach (RoadUserWidget roadUser in roadUsers)
+            {
+                if (roadUser is VoitureWidget)
+                {
+                    VoitureWidget voiture = roadUser as VoitureWidget;
+                    foreach (RouteWidget route in Ways)
+                    {
+                        
+                        if (route.Route.DansLaRoute(voiture.Voiture))
+                        {
+                            voiture.Couleur = Color.Green;
+                            MessageBox.Show("Voiture verte");
+                        }
+                    }
+                    voiture.Couleur = Color.Red;
+                }
+            }
 
             Invalidate();
         }

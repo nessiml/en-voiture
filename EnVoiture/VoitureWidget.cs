@@ -35,7 +35,7 @@ namespace EnVoiture
 
         public override void Paint(Graphics g)
         {
-            g.FillRectangle(Brushes.Red, Voiture.Bounds);
+            g.FillRectangle(new SolidBrush(this.Couleur), Voiture.Bounds);
         }
     }
 }
