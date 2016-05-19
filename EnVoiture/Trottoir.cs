@@ -14,6 +14,7 @@ namespace EnVoiture
             TROTTOIR,
             RIEN
         }
+        
 
         public bool DetectionTrottoir ()
         {
