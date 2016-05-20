@@ -54,7 +54,7 @@ namespace EnVoiture
         {
             get
             {
-                return Position.Y - this.Taille.Height;
+                return Position.Y + this.Taille.Height;
                 
             }
             
@@ -83,7 +83,6 @@ namespace EnVoiture
         /// <returns>retourne vrai si la voiture se trouve sur la route et false si elle ne l'est pas</returns>
         public bool DansLaRoute(Voiture voiture)
         {
-            
             //si le bord gauche de la voiture dépasse le bord gauche de la route
             if (voiture.Left<this.BordGauche)
             {
