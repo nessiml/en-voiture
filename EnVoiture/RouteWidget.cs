@@ -51,8 +51,7 @@ namespace EnVoiture
                 g.DrawLine(GreyPen, pointTrottoirDroite1, pointTrottoirDroite2);
                 g.DrawLine(GreyPen, pointTrottoirGauche1, pointTrottoirGauche2);
                 
-                //g.DrawLine(BlackPen, point1, point2);
-                g.FillRectangle(Brushes.Pink, point1.X-10, point2.Y-50, 20, 50);
+                g.FillRectangle(Brushes.Black, point1.X - 10, point2.Y - 50, 20, 50);
 
 
             }
@@ -76,7 +75,7 @@ namespace EnVoiture
                 g.DrawLine(GreyPen, pointTrottoirDroite1, pointTrottoirDroite2);
                 g.DrawLine(GreyPen, pointTrottoirGauche1, pointTrottoirGauche2);
 
-                g.DrawLine(BlackPen, point1, point2);
+                g.FillRectangle(Brushes.Black, point1.X - 10, point2.Y, 20, 50);
             }
             if (Route.GetDictionaire.ContainsKey(Orientation.EAST) && Route.GetDictionaire[Orientation.EAST])
             {
@@ -98,7 +97,7 @@ namespace EnVoiture
                 g.DrawLine(GreyPen, pointTrottoirDroite1, pointTrottoirDroite2);
                 g.DrawLine(GreyPen, pointTrottoirGauche1, pointTrottoirGauche2);
 
-                g.DrawLine(BlackPen, point1, point2);
+                g.FillRectangle(Brushes.Black, point1.X - 50, point2.Y - 10, 50, 20);
             }
             if (Route.GetDictionaire.ContainsKey(Orientation.WEST) && Route.GetDictionaire[Orientation.WEST])
             {
@@ -120,7 +119,7 @@ namespace EnVoiture
                 g.DrawLine(GreyPen, pointTrottoirDroite1, pointTrottoirDroite2);
                 g.DrawLine(GreyPen, pointTrottoirGauche1, pointTrottoirGauche2);
 
-                g.DrawLine(BlackPen, point1, point2);
+                g.FillRectangle(Brushes.Black, point1.X, point2.Y - 10, 50, 20);
             }
         }
 
