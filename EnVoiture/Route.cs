@@ -42,6 +42,73 @@ namespace EnVoiture
                 Position = new Point(Position.X, value);
             }
         }
+        public int BordHaut
+        {
+            get
+            {
+                return Position.Y;
+            }
+            
+        }
+        public int BordBas
+        {
+            get
+            {
+                return Position.Y - this.Taille.Height;
+                
+            }
+            
+        }
+        public int BordGauche
+        {
+            get
+            {
+                return Position.X;
+            }
+            
+        }
+        public int BordDroite
+        {
+            get
+            {
+                return Position.X + this.Taille.Width;
+            }
+            
+        }
+        /// <summary>
+        /// permet de tester si la voiture se trouve sur la route
+        /// </summary>
+        /// <param name="route">contient la route</param>
+        /// <param name="voiture">contient la voiture</param>
+        /// <returns>retourne vrai si la voiture se trouve sur la route et false si elle ne l'est pas</returns>
+        public bool DansLaRoute(Voiture voiture)
+        {
+            
+            //si le bord gauche de la voiture dépasse le bord gauche de la route
+            if (voiture.Left<this.BordGauche)
+            {
+                return false;
+            }
+            //si le bord droit de la voiture dépasse le bord droit de la route
+            if (voiture.Right > this.BordDroite)
+            {
+                return false;
+            }
+            //si le bord haut de la voiture dépasse le bord haut de la route
+            if (voiture.Top < this.BordHaut)
+            {
+                return false;
+            }
+            //si le bord bas de la voiture dépasse le bord bas de la route
+            if (voiture.Bottom > this.BordBas)
+            {
+                return false;
+            }
+            return true;
+
+            
+        }
+        
         
         /// <summary>
         /// Taille de la route
