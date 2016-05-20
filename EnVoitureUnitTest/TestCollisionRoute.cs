@@ -8,12 +8,15 @@ using System.Threading.Tasks;
 namespace EnVoitureUnitTest
 {
     [TestClass]
-    public class TestTrottoir
+    public class TestCollisionRoute
     {
         [TestMethod]
-        public void TestDetectionTrottoir()
+        public void TestCollision()
         {
-            
+            if()
+            {
+
+            }
         }
     }
 }
