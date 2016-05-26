@@ -102,7 +102,7 @@ namespace EnVoiture
         private void timer_Tick(object sender, System.EventArgs e)
         {
             enVoiturePanel.Tick(sender, e);
-            foreach (RoadUserWidget roadUser in _roadUsers)
+            foreach (UsagerWidget roadUser in _roadUsers)
            {
                 if (roadUser is VoitureWidget)
                 {
