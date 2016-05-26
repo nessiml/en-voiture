@@ -83,30 +83,30 @@ namespace EnVoiture
         /// <returns>retourne vrai si la voiture se trouve sur la route et false si elle ne l'est pas</returns>
         public bool DansLaRoute(Voiture voiture)
         {
-            
+
             //si le bord gauche de la voiture dépasse le bord gauche de la route
-            if (voiture.Left<this.BordGauche)
+            if (voiture.Gauche < this.BordGauche)
             {
                 return false;
             }
             //si le bord droit de la voiture dépasse le bord droit de la route
-            if (voiture.Right > this.BordDroite)
+            if (voiture.Droite > this.BordDroite)
             {
                 return false;
             }
             //si le bord haut de la voiture dépasse le bord haut de la route
-            if (voiture.Top < this.BordHaut)
+            if (voiture.Haut < this.BordHaut)
             {
                 return false;
             }
             //si le bord bas de la voiture dépasse le bord bas de la route
-            if (voiture.Bottom > this.BordBas)
+            if (voiture.Bas > this.BordBas)
             {
                 return false;
             }
             return true;
 
-            
+
         }
         
         
@@ -235,12 +235,12 @@ namespace EnVoiture
 
                         if (x != 0)
                         {
-                            sortieW = _routesVille[n-1]._orientationsRoutes[Orientation.EAST];
+                            sortieW = _routesVille[n-1]._orientationsRoutes[Orientation.EST];
                         }
 
                         if (y != 0)
                         {
-                            sortieN = _routesVille[n - largeurVille]._orientationsRoutes[Orientation.SOUTH];
+                            sortieN = _routesVille[n - largeurVille]._orientationsRoutes[Orientation.SUD];
                         }
 
                         if (sortieE)
@@ -261,10 +261,10 @@ namespace EnVoiture
                         }
 
                     } while (icpt < 2);
-                    _bList.Add(Orientation.NORTH, sortieN);
-                    _bList.Add(Orientation.EAST, sortieE);
-                    _bList.Add(Orientation.SOUTH, sortieS);
-                    _bList.Add(Orientation.WEST, sortieW);
+                    _bList.Add(Orientation.NORD, sortieN);
+                    _bList.Add(Orientation.EST, sortieE);
+                    _bList.Add(Orientation.SUD, sortieS);
+                    _bList.Add(Orientation.OUEST, sortieW);
 
                     _routesVille.Add(new Route(new Point(x, y), new Size(1, 1), _bList));
             }
