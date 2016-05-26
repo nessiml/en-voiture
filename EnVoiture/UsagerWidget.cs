@@ -6,7 +6,7 @@ using System.Text;
 
 namespace EnVoiture
 {
-    public abstract class RoadUserWidget
+    public abstract class UsagerWidget
     {
         public Color Couleur { get; set; }
 
