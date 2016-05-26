@@ -11,9 +11,47 @@ namespace EnVoiture
     {
         private Dictionary<Orientation, bool> _orientationsRoutes;
 
+        const int largeur = 20;
+        const int hauteur = 50;
+
         /// <summary>
         /// Location of the way
         /// </summary>
+        public int SIZE
+        {
+            get
+            {
+                return 100;
+            }  
+        }
+        public int LargeurNordSud
+        {
+            get
+            {
+                return largeur;
+            }
+        }
+        public int HauteurNordSud
+        {
+            get
+            {
+                return hauteur;
+            }
+        }
+        public int LargeurEstOuest
+        {
+            get
+            {
+                return hauteur;
+            }
+        }
+        public int HauteurEstOuest
+        {
+            get
+            {
+                return largeur;
+            }
+        }
         public Point Position
         {
             get;

@@ -15,7 +15,6 @@ namespace EnVoiture
         private List<RoadUserWidget> _roadUsers = new List<RoadUserWidget>();
 
         Voiture voiture;
-        bool bAvancer = false, bReculer = false, bDroite = false, bGauche = false;
 
         // Liste des routes
         private List<Route> Ways = new List<Route>();
