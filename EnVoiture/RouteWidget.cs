@@ -9,7 +9,7 @@ namespace EnVoiture
 {
     public class RouteWidget
     {
-        public static int SIZE = 100;
+       // public static int Route.SIZE(100);
         public Route Route { get; set; }
 
         public RouteWidget(Route way)
@@ -18,16 +18,17 @@ namespace EnVoiture
         }
         public void Dessiner(Graphics g)
         {
-            int Left = Route.Position.X * SIZE;
-            int Top = Route.Position.Y * SIZE;
-            int TailleX = Route.Taille.Width * SIZE;
-            int TailleY = Route.Taille.Height * SIZE;
+            int Left = Route.Position.X * Route.SIZE;
+            int Top = Route.Position.Y * Route.SIZE;
+            int TailleX = Route.Taille.Width * Route.SIZE;
+            int TailleY = Route.Taille.Height * Route.SIZE;
 
             g.FillRectangle(Brushes.YellowGreen, Left, Top,TailleX, TailleY);
             Pen BlackPen = new Pen(Color.Black, 20);
             Pen GreyPen = new Pen(Color.Gray, 5);
             Point point2 = new Point(Left + TailleY / 2, Top + TailleY / 2);
             Point point1;
+            Rectangle trottoir = new Rectangle(10,10,5,10);
 
             if (Route.GetDictionaire.ContainsKey(Orientation.NORD) && Route.GetDictionaire[Orientation.NORD])
             {
@@ -67,7 +68,9 @@ namespace EnVoiture
                 g.DrawLine(GreyPen, pointTrottoirDroite1, pointTrottoirDroite2);
                 g.DrawLine(GreyPen, pointTrottoirGauche1, pointTrottoirGauche2);
                 
-                g.FillRectangle(Brushes.Black, point1.X - 10, point2.Y - 50, 20, 50);
+                //g.FillRectangle(Brushes.Black, point1.X - 10, point2.Y - 50, Route.LargeurNordSud, Route.HauteurNordSud);
+
+                g.DrawRectangle(GreyPen,trottoir);
 
 
             }
@@ -110,7 +113,7 @@ namespace EnVoiture
                 g.DrawLine(GreyPen, pointTrottoirDroite1, pointTrottoirDroite2);
                 g.DrawLine(GreyPen, pointTrottoirGauche1, pointTrottoirGauche2);
 
-                g.FillRectangle(Brushes.Black, point1.X - 10, point2.Y, 20, 50);
+                g.FillRectangle(Brushes.Black, point1.X - 10, point2.Y, Route.LargeurNordSud, Route.HauteurNordSud);
             }
             if (Route.GetDictionaire.ContainsKey(Orientation.EST) && Route.GetDictionaire[Orientation.EST])
             {
@@ -141,7 +144,7 @@ namespace EnVoiture
                 g.DrawLine(GreyPen, pointTrottoirDroite1, pointTrottoirDroite2);
                 g.DrawLine(GreyPen, pointTrottoirGauche1, pointTrottoirGauche2);
 
-                g.FillRectangle(Brushes.Black, point1.X - 50, point2.Y - 10, 50, 20);
+                g.FillRectangle(Brushes.Black, point1.X - 50, point2.Y - 10, Route.LargeurEstOuest, Route.HauteurEstOuest);
             }
             if (Route.GetDictionaire.ContainsKey(Orientation.OUEST) && Route.GetDictionaire[Orientation.OUEST])
             {
@@ -172,7 +175,7 @@ namespace EnVoiture
                 g.DrawLine(GreyPen, pointTrottoirDroite1, pointTrottoirDroite2);
                 g.DrawLine(GreyPen, pointTrottoirGauche1, pointTrottoirGauche2);
 
-                g.FillRectangle(Brushes.Black, point1.X, point2.Y - 10, 50, 20);
+                g.FillRectangle(Brushes.Black, point1.X, point2.Y - 10, Route.LargeurEstOuest, Route.HauteurEstOuest);
             }
 
             g.FillEllipse(Brushes.Black, point2.X - 10, point2.Y - 10, 20, 20);

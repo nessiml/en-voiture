@@ -12,10 +12,9 @@ namespace EnVoiture
     public partial class EnVoitureForm : Form
     {
         // Liste des elements qui seront affichés
-        private List<UsagerWidget> _roadUsers = new List<UsagerWidget>();
+        private List<RoadUserWidget> _roadUsers = new List<RoadUserWidget>();
 
         Voiture voiture;
-        bool bAvancer = false, bReculer = false, bDroite = false, bGauche = false;
 
         // Liste des routes
         private List<Route> Ways = new List<Route>();
@@ -40,7 +39,7 @@ namespace EnVoiture
         /// <returns></returns>
         public Route CreateWay(int x, int y)
         {
-            Route RouteBase = new Route(x, y, 100, 100, new List<Orientation>() { Orientation.NORD });
+            Route RouteBase = new Route(x, y, 100, 100, new List<Orientation>() { Orientation.NORTH });
             return RouteBase;
         }
 
@@ -79,7 +78,7 @@ namespace EnVoiture
             if (toolsBox.Visible)
             {
                 // mode edition
-                foreach (UsagerWidget user in _roadUsers)
+                foreach (RoadUserWidget user in _roadUsers)
                 {
                     if (!(user is VoitureWidget))
                         user.Dessiner(g);
@@ -87,7 +86,7 @@ namespace EnVoiture
             }
             else
             {
-                foreach (UsagerWidget user in _roadUsers)
+                foreach (RoadUserWidget user in _roadUsers)
                 {
                     user.Dessiner(g);
 
@@ -102,24 +101,6 @@ namespace EnVoiture
         private void timer_Tick(object sender, System.EventArgs e)
         {
             enVoiturePanel.Tick(sender, e);
-            foreach (UsagerWidget roadUser in _roadUsers)
-           {
-                if (roadUser is VoitureWidget)
-                {
-                    VoitureWidget voiture = roadUser as VoitureWidget;
-                    foreach (Route route in Ways)
-                    {
-
-                        if (route.DansLaRoute(voiture.Voiture))
-                        {
-                            voiture.Couleur = Color.Green;
-                            MessageBox.Show("Voiture verte");
-                       }
-                    }
-                    voiture.Couleur = Color.Red;
-                }
-            }
-
         }
         /// <summary>
         ///
