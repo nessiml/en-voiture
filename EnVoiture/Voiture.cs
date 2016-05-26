@@ -5,7 +5,7 @@ namespace EnVoiture
     /// <summary>
     /// Représentation d'une voiture dans l'application.
     /// </summary>
-    public class Voiture : RoadUser
+    public class Voiture : Usager
     {
         
         /// <summary>
