@@ -13,7 +13,6 @@ namespace EnVoitureUnitTest
         [TestMethod]
         public void TestCollision()
         {
-
         }
     }
 }

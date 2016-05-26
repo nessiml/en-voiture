@@ -90,6 +90,7 @@ namespace EnVoiture
                 foreach (RoadUserWidget user in _roadUsers)
                 {
                     user.Dessiner(g);
+
                 }
             }
         }
@@ -101,6 +102,24 @@ namespace EnVoiture
         private void timer_Tick(object sender, System.EventArgs e)
         {
             enVoiturePanel.Tick(sender, e);
+            foreach (RoadUserWidget roadUser in _roadUsers)
+           {
+                if (roadUser is VoitureWidget)
+                {
+                    VoitureWidget voiture = roadUser as VoitureWidget;
+                    foreach (Route route in Ways)
+                    {
+
+                        if (route.DansLaRoute(voiture.Voiture))
+                        {
+                            voiture.Couleur = Color.Green;
+                            MessageBox.Show("Voiture verte");
+                       }
+                    }
+                    voiture.Couleur = Color.Red;
+                }
+            }
+
         }
         /// <summary>
         ///
