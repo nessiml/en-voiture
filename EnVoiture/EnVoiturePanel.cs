@@ -166,7 +166,7 @@ namespace EnVoiture
                 _hoverWayWidget.Route.Position = new Point(p.X / 100, p.Y / 100);
             }
 
-            foreach (RoadUserWidget roadUserWidget in roadUsers)
+            foreach (UsagerWidget roadUserWidget in roadUsers)
             {
                 if (roadUserWidget is VoitureWidget)
                 {

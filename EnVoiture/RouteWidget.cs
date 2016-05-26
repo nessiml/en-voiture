@@ -28,10 +28,12 @@ namespace EnVoiture
             Pen GreyPen = new Pen(Color.Gray, 5);
             Point point2 = new Point(Left + TailleY / 2, Top + TailleY / 2);
             Point point1;
-            Rectangle trottoir = new Rectangle(10,10,5,10);
-
+            
+            // Test des clés d'une route
+            //          Test si la clé existe                            Test si la clé nord est à TRUE 
             if (Route.GetDictionaire.ContainsKey(Orientation.NORD) && Route.GetDictionaire[Orientation.NORD])
             {
+                //Definit le centre de la route
                 point1 = new Point(Left + TailleX / 2,Top);
 
                 Point pointTrottoirDroite2 = new Point(point2.X, point2.Y);
@@ -68,10 +70,7 @@ namespace EnVoiture
                 g.DrawLine(GreyPen, pointTrottoirDroite1, pointTrottoirDroite2);
                 g.DrawLine(GreyPen, pointTrottoirGauche1, pointTrottoirGauche2);
                 
-                //g.FillRectangle(Brushes.Black, point1.X - 10, point2.Y - 50, Route.LargeurNordSud, Route.HauteurNordSud);
-
-                g.DrawRectangle(GreyPen,trottoir);
-
+                g.FillRectangle(Brushes.Black, point1.X - 10, point2.Y - 50, Route.LargeurNordSud, Route.HauteurNordSud);
 
             }
             if (Route.GetDictionaire.ContainsKey(Orientation.SUD) && Route.GetDictionaire[Orientation.SUD])
