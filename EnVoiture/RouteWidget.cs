@@ -22,10 +22,10 @@ namespace EnVoiture
             int Top = Route.Position.Y * Route.SIZE;
             int TailleX = Route.Taille.Width * Route.SIZE;
             int TailleY = Route.Taille.Height * Route.SIZE;
+            const int iLargeurTrottoir = 5;
 
             g.FillRectangle(Brushes.YellowGreen, Left, Top,TailleX, TailleY);
-            Pen BlackPen = new Pen(Color.Black, 20);
-            Pen GreyPen = new Pen(Color.Gray, 5);
+            Pen GreyPen = new Pen(Color.Gray, iLargeurTrottoir);
             Point point2 = new Point(Left + TailleY / 2, Top + TailleY / 2);
             Point point1;
             
@@ -36,25 +36,27 @@ namespace EnVoiture
                 //Definit le centre de la route
                 point1 = new Point(Left + TailleX / 2,Top);
 
-                Point pointTrottoirDroite2 = new Point(point2.X, point2.Y);
+                //Création des points pour les trottoirs
+                Point pointTrottoirDroite2 = new Point(point2.X, point2.Y);// On reprend les point qui ont été créée pour le millieu des routes
                 Point pointTrottoirDroite1 = new Point(point1.X,point1.Y);
 
                 Point pointTrottoirGauche2 = new Point(point2.X, point2.Y);
                 Point pointTrottoirGauche1 = new Point(point1.X, point1.Y);
 
-                pointTrottoirDroite2.Offset(12, -10);
-                pointTrottoirDroite1.Offset(12, 0);
+                //
+                pointTrottoirDroite2.Offset((Route.LargeurNordSud / 2) + (iLargeurTrottoir / 2), -(Route.LargeurNordSud / 2));
+                pointTrottoirDroite1.Offset((Route.LargeurNordSud / 2) + (iLargeurTrottoir / 2), 0);
 
-                pointTrottoirGauche2.Offset(-12, -10);
-                pointTrottoirGauche1.Offset(-12, 0);
+                pointTrottoirGauche2.Offset(-((Route.LargeurNordSud / 2) + (iLargeurTrottoir / 2)), -(Route.LargeurNordSud / 2));
+                pointTrottoirGauche1.Offset(-((Route.LargeurNordSud / 2) + (iLargeurTrottoir / 2)), 0);
 
                 if (Route.GetDictionaire[Orientation.EST] == false)
                 {
-                    pointTrottoirDroite2.Offset(0, 10);
+                    pointTrottoirDroite2.Offset(0, Route.LargeurNordSud / 2);
                 }
                 if (Route.GetDictionaire[Orientation.OUEST] == false)
                 {
-                    pointTrottoirGauche2.Offset(0, 10);
+                    pointTrottoirGauche2.Offset(0, Route.LargeurNordSud / 2);
                 }
 
                 if (Route.GetDictionaire[Orientation.SUD] == false && Route.GetDictionaire[Orientation.EST] == false)
@@ -70,7 +72,7 @@ namespace EnVoiture
                 g.DrawLine(GreyPen, pointTrottoirDroite1, pointTrottoirDroite2);
                 g.DrawLine(GreyPen, pointTrottoirGauche1, pointTrottoirGauche2);
                 
-                g.FillRectangle(Brushes.Black, point1.X - 10, point2.Y - 50, Route.LargeurNordSud, Route.HauteurNordSud);
+                g.FillRectangle(Brushes.Black, point1.X - (Route.LargeurNordSud / 2), point2.Y - (Route.SIZE / 2), Route.LargeurNordSud, Route.HauteurNordSud);
 
             }
             if (Route.GetDictionaire.ContainsKey(Orientation.SUD) && Route.GetDictionaire[Orientation.SUD])
@@ -84,19 +86,19 @@ namespace EnVoiture
                 Point pointTrottoirGauche2 = new Point(point2.X, point2.Y);
                 Point pointTrottoirGauche1 = new Point(point1.X, point1.Y);
 
-                pointTrottoirDroite2.Offset(12, 10);
-                pointTrottoirDroite1.Offset(12, 0);
+                pointTrottoirDroite2.Offset((Route.LargeurNordSud / 2) + (iLargeurTrottoir / 2), Route.LargeurNordSud / 2);
+                pointTrottoirDroite1.Offset((Route.LargeurNordSud / 2) + (iLargeurTrottoir / 2), 0);
 
-                pointTrottoirGauche2.Offset(-12, 10);
-                pointTrottoirGauche1.Offset(-12, 0);
+                pointTrottoirGauche2.Offset(-((Route.LargeurNordSud / 2) + (iLargeurTrottoir / 2)), Route.LargeurNordSud / 2);
+                pointTrottoirGauche1.Offset(-((Route.LargeurNordSud / 2) + (iLargeurTrottoir / 2)), 0);
 
                 if (Route.GetDictionaire[Orientation.EST] == false)
                 {
-                    pointTrottoirDroite2.Offset(0, -10);
+                    pointTrottoirDroite2.Offset(0, -(Route.LargeurNordSud / 2));
                 }
                 if (Route.GetDictionaire[Orientation.OUEST] == false)
                 {
-                    pointTrottoirGauche2.Offset(0, -10);
+                    pointTrottoirGauche2.Offset(0, -(Route.LargeurNordSud / 2));
                 }
 
                 if (Route.GetDictionaire[Orientation.NORD] == false && Route.GetDictionaire[Orientation.EST] == false)
@@ -112,7 +114,7 @@ namespace EnVoiture
                 g.DrawLine(GreyPen, pointTrottoirDroite1, pointTrottoirDroite2);
                 g.DrawLine(GreyPen, pointTrottoirGauche1, pointTrottoirGauche2);
 
-                g.FillRectangle(Brushes.Black, point1.X - 10, point2.Y, Route.LargeurNordSud, Route.HauteurNordSud);
+                g.FillRectangle(Brushes.Black, point1.X - (Route.LargeurNordSud / 2), point2.Y, Route.LargeurNordSud, Route.HauteurNordSud);
             }
             if (Route.GetDictionaire.ContainsKey(Orientation.EST) && Route.GetDictionaire[Orientation.EST])
             {
@@ -125,25 +127,25 @@ namespace EnVoiture
                 Point pointTrottoirGauche2 = new Point(point2.X, point2.Y);
                 Point pointTrottoirGauche1 = new Point(point1.X, point1.Y);
 
-                pointTrottoirDroite2.Offset(10, 12);
-                pointTrottoirDroite1.Offset(0, 12);
+                pointTrottoirDroite2.Offset(Route.HauteurEstOuest / 2, (Route.HauteurEstOuest / 2) + (iLargeurTrottoir / 2));
+                pointTrottoirDroite1.Offset(0, (Route.HauteurEstOuest / 2) + (iLargeurTrottoir / 2));
 
-                pointTrottoirGauche2.Offset(10, -12);
-                pointTrottoirGauche1.Offset(0, -12);
+                pointTrottoirGauche2.Offset(Route.HauteurEstOuest / 2, -((Route.HauteurEstOuest / 2) + (iLargeurTrottoir / 2)));
+                pointTrottoirGauche1.Offset(0, -((Route.HauteurEstOuest / 2) + (iLargeurTrottoir / 2)));
 
                 if (Route.GetDictionaire[Orientation.SUD] == false)
                 {
-                    pointTrottoirDroite2.Offset(-10, 0);
+                    pointTrottoirDroite2.Offset(-(Route.HauteurEstOuest / 2), 0);
                 }
                 if (Route.GetDictionaire[Orientation.NORD] == false)
                 {
-                    pointTrottoirGauche2.Offset(-10, 0);
+                    pointTrottoirGauche2.Offset(-(Route.HauteurEstOuest / 2), 0);
                 }
 
                 g.DrawLine(GreyPen, pointTrottoirDroite1, pointTrottoirDroite2);
                 g.DrawLine(GreyPen, pointTrottoirGauche1, pointTrottoirGauche2);
 
-                g.FillRectangle(Brushes.Black, point1.X - 50, point2.Y - 10, Route.LargeurEstOuest, Route.HauteurEstOuest);
+                g.FillRectangle(Brushes.Black, point1.X - (Route.SIZE / 2), point2.Y -(Route.HauteurEstOuest / 2), Route.LargeurEstOuest, Route.HauteurEstOuest);
             }
             if (Route.GetDictionaire.ContainsKey(Orientation.OUEST) && Route.GetDictionaire[Orientation.OUEST])
             {
@@ -156,25 +158,25 @@ namespace EnVoiture
                 Point pointTrottoirGauche2 = new Point(point2.X, point2.Y);
                 Point pointTrottoirGauche1 = new Point(point1.X, point1.Y);
 
-                pointTrottoirDroite2.Offset(-10, 12);
-                pointTrottoirDroite1.Offset(0, 12);
+                pointTrottoirDroite2.Offset(-(Route.HauteurEstOuest / 2), (Route.HauteurEstOuest / 2) + (iLargeurTrottoir / 2));
+                pointTrottoirDroite1.Offset(0, (Route.HauteurEstOuest / 2) + (iLargeurTrottoir / 2));
 
-                pointTrottoirGauche2.Offset(-10, -12);
-                pointTrottoirGauche1.Offset(0, -12);
+                pointTrottoirGauche2.Offset(-(Route.HauteurEstOuest / 2), -((Route.HauteurEstOuest / 2) + (iLargeurTrottoir / 2)));
+                pointTrottoirGauche1.Offset(0, -((Route.HauteurEstOuest / 2) + (iLargeurTrottoir / 2)));
 
                 if (Route.GetDictionaire[Orientation.SUD] == false)
                 {
-                    pointTrottoirDroite2.Offset(10, 0);
+                    pointTrottoirDroite2.Offset(Route.HauteurEstOuest / 2, 0);
                 }
                 if (Route.GetDictionaire[Orientation.NORD] == false)
                 {
-                    pointTrottoirGauche2.Offset(10, 0);
+                    pointTrottoirGauche2.Offset(Route.HauteurEstOuest / 2, 0);
                 }
 
                 g.DrawLine(GreyPen, pointTrottoirDroite1, pointTrottoirDroite2);
                 g.DrawLine(GreyPen, pointTrottoirGauche1, pointTrottoirGauche2);
 
-                g.FillRectangle(Brushes.Black, point1.X, point2.Y - 10, Route.LargeurEstOuest, Route.HauteurEstOuest);
+                g.FillRectangle(Brushes.Black, point1.X, point2.Y - (Route.HauteurEstOuest / 2), Route.LargeurEstOuest, Route.HauteurEstOuest);
             }
 
             g.FillEllipse(Brushes.Black, point2.X - 10, point2.Y - 10, 20, 20);
