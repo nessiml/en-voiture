@@ -5,7 +5,7 @@ namespace EnVoiture
     /// <summary>
     /// Représentation visuelle d'une voiture dans l'application.
     /// </summary>
-    public class VoitureWidget : RoadUserWidget
+    public class VoitureWidget : UsagerWidget
     {
         /// <summary>
         /// La voiture liée à cet afficheur.
@@ -35,7 +35,8 @@ namespace EnVoiture
 
         public override void Dessiner(Graphics g)
         {
-            g.FillRectangle(new SolidBrush(Couleur), Voiture.Location.X, Voiture.Location.Y, Voiture.Width, Voiture.Height);
+            //g.FillRectangle(Brushes.Red, Voiture.Bornes);
+            g.DrawImage(Properties.Resources.voiture, Voiture.Position);
         }
     }
 }
