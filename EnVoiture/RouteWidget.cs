@@ -70,21 +70,21 @@ namespace EnVoiture
                 pointTrottoirGauche2.Offset(-12, -10);
                 pointTrottoirGauche1.Offset(-12, 0);
 
-                if (Route.DictionaireObstacles[Orientation.EST] == Obstacle.ROUTETROTTOIR)
+                if (Route.DictionnaireObstacles[Orientation.EST] == Obstacle.ROUTETROTTOIR)
                 {
                     pointTrottoirDroite2.Offset(0, 10);
                 }
-                if (Route.DictionaireObstacles[Orientation.OUEST] == Obstacle.ROUTETROTTOIR)
+                if (Route.DictionnaireObstacles[Orientation.OUEST] == Obstacle.ROUTETROTTOIR)
                 {
                     pointTrottoirGauche2.Offset(0, 10);
                 }
 
-                if (Route.DictionaireObstacles[Orientation.SUD] == Obstacle.ROUTETROTTOIR && Route.DictionaireObstacles[Orientation.EST] == Obstacle.ROUTETROTTOIR)
+                if (Route.DictionnaireObstacles[Orientation.SUD] == Obstacle.ROUTETROTTOIR && Route.DictionnaireObstacles[Orientation.EST] == Obstacle.ROUTETROTTOIR)
                 {
                     g.FillEllipse(Brushes.Gray, point2.X - 10, point2.Y - 10, 25, 25);
                 }
 
-                if (Route.DictionaireObstacles[Orientation.SUD] == Obstacle.ROUTETROTTOIR && Route.DictionaireObstacles[Orientation.OUEST] == Obstacle.ROUTETROTTOIR)
+                if (Route.DictionnaireObstacles[Orientation.SUD] == Obstacle.ROUTETROTTOIR && Route.DictionnaireObstacles[Orientation.OUEST] == Obstacle.ROUTETROTTOIR)
                 {
                     g.FillEllipse(Brushes.Gray, point2.X - 15, point2.Y - 10, 25, 25);
                 }
@@ -109,21 +109,21 @@ namespace EnVoiture
                 pointTrottoirGauche2.Offset(-12, 10);
                 pointTrottoirGauche1.Offset(-12, 0);
 
-                if (Route.DictionaireObstacles[Orientation.EST] == Obstacle.ROUTETROTTOIR)
+                if (Route.DictionnaireObstacles[Orientation.EST] == Obstacle.ROUTETROTTOIR)
                 {
                     pointTrottoirDroite2.Offset(0, -10);
                 }
-                if (Route.DictionaireObstacles[Orientation.OUEST] == Obstacle.ROUTETROTTOIR)
+                if (Route.DictionnaireObstacles[Orientation.OUEST] == Obstacle.ROUTETROTTOIR)
                 {
                     pointTrottoirGauche2.Offset(0, -10);
                 }
 
-                if (Route.DictionaireObstacles[Orientation.NORD] == Obstacle.ROUTETROTTOIR && Route.DictionaireObstacles[Orientation.EST] == Obstacle.ROUTETROTTOIR)
+                if (Route.DictionnaireObstacles[Orientation.NORD] == Obstacle.ROUTETROTTOIR && Route.DictionnaireObstacles[Orientation.EST] == Obstacle.ROUTETROTTOIR)
                 {
                     g.FillEllipse(Brushes.Gray, point2.X - 10, point2.Y -15, 25, 25);
                 }
 
-                if (Route.DictionaireObstacles[Orientation.NORD] == Obstacle.ROUTETROTTOIR && Route.DictionaireObstacles[Orientation.OUEST] == Obstacle.ROUTETROTTOIR)
+                if (Route.DictionnaireObstacles[Orientation.NORD] == Obstacle.ROUTETROTTOIR && Route.DictionnaireObstacles[Orientation.OUEST] == Obstacle.ROUTETROTTOIR)
                 {
                     g.FillEllipse(Brushes.Gray, point2.X - 15, point2.Y - 15, 25, 25);
                 }
@@ -135,10 +135,10 @@ namespace EnVoiture
 
                 /*point1 = new Point(x + largeur / 2, y + hauteur);
                 g.DrawLine(BlackPen, point1, point2);*/
-                DessinerSegment(g, Orientation.SUD, Route.DictionaireObstacles[Orientation.SUD], x, y, largeur, hauteur);
+                DessinerSegment(g, Orientation.SUD, Route.DictionnaireObstacles[Orientation.SUD], x, y, largeur, hauteur);
             }
 
-            if (Route.DictionaireObstacles.ContainsKey(Orientation.EST))
+            if (Route.DictionnaireObstacles.ContainsKey(Orientation.EST))
             {
                 pointTrottoirDroite2.Offset(10, 12);
                 pointTrottoirDroite1.Offset(0, 12);
@@ -146,11 +146,11 @@ namespace EnVoiture
                 pointTrottoirGauche2.Offset(10, -12);
                 pointTrottoirGauche1.Offset(0, -12);
 
-                if (Route.DictionaireObstacles[Orientation.SUD] == Obstacle.ROUTETROTTOIR)
+                if (Route.DictionnaireObstacles[Orientation.SUD] == Obstacle.ROUTETROTTOIR)
                 {
                     pointTrottoirDroite2.Offset(-10, 0);
                 }
-                if (Route.DictionaireObstacles[Orientation.NORD] == Obstacle.ROUTETROTTOIR)
+                if (Route.DictionnaireObstacles[Orientation.NORD] == Obstacle.ROUTETROTTOIR)
                 {
                     pointTrottoirGauche2.Offset(-10, 0);
                 }
@@ -162,10 +162,10 @@ namespace EnVoiture
 
                /* point1 = new Point(x + largeur, y + hauteur / 2);
                 g.DrawLine(BlackPen, point1, point2);*/
-                DessinerSegment(g, Orientation.EST, Route.DictionaireObstacles[Orientation.EST], x, y, largeur, hauteur);
+                DessinerSegment(g, Orientation.EST, Route.DictionnaireObstacles[Orientation.EST], x, y, largeur, hauteur);
             }
 
-            if (Route.DictionaireObstacles.ContainsKey(Orientation.OUEST))
+            if (Route.DictionnaireObstacles.ContainsKey(Orientation.OUEST))
             {
                 pointTrottoirDroite2.Offset(-10, 12);
                 pointTrottoirDroite1.Offset(0, 12);
@@ -173,11 +173,11 @@ namespace EnVoiture
                 pointTrottoirGauche2.Offset(-10, -12);
                 pointTrottoirGauche1.Offset(0, -12);
 
-                if (Route.DictionaireObstacles[Orientation.SUD] == Obstacle.ROUTETROTTOIR)
+                if (Route.DictionnaireObstacles[Orientation.SUD] == Obstacle.ROUTETROTTOIR)
                 {
                     pointTrottoirDroite2.Offset(10, 0);
                 }
-                if (Route.DictionaireObstacles[Orientation.NORD] == Obstacle.ROUTETROTTOIR)
+                if (Route.DictionnaireObstacles[Orientation.NORD] == Obstacle.ROUTETROTTOIR)
                 {
                     pointTrottoirGauche2.Offset(10, 0);
                 }
