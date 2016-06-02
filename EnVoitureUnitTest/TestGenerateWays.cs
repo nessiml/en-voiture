@@ -14,7 +14,7 @@ namespace EnVoitureUnitTest
          [TestMethod]
          public void TestCreationVille()
          {
-             List<Route> Ways= new List<Route>();
+             List<Route> Ways = new List<Route>();
              Ways = Route.Generer(3, 3);
              Assert.AreEqual(9, Ways.Count);
          }
