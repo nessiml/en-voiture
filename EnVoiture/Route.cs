@@ -1,5 +1,4 @@
-﻿using EnVoiture.Modele;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -8,57 +7,13 @@ using System.Threading.Tasks;
 
 namespace EnVoiture
 {
-    public class Route : ICloneable
+    public class Route
     {
-        private Dictionary<Orientation, Obstacle> _orientationsRoutes = new Dictionary<Orientation, Obstacle>()
-                {
-                    { Orientation.NORD, Obstacle.RIEN },
-                    { Orientation.EST, Obstacle.RIEN },
-                    { Orientation.SUD, Obstacle.RIEN },
-                    { Orientation.OUEST, Obstacle.RIEN }
-                };
-
-        const int largeur = 20;
-        const int hauteur = 50;
+        private Dictionary<Orientation, bool> _orientationsRoutes;
 
         /// <summary>
         /// Location of the way
         /// </summary>
-        public int SIZE
-        {
-            get
-            {
-                return 100;
-            }  
-        }
-        public int LargeurNordSud
-        {
-            get
-            {
-                return largeur;
-            }
-        }
-        public int HauteurNordSud
-        {
-            get
-            {
-                return hauteur;
-            }
-        }
-        public int LargeurEstOuest
-        {
-            get
-            {
-                return hauteur;
-            }
-        }
-        public int HauteurEstOuest
-        {
-            get
-            {
-                return largeur;
-            }
-        }
         public Point Position
         {
             get;
@@ -99,7 +54,7 @@ namespace EnVoiture
         {
             get
             {
-                return Position.Y + this.Taille.Height;
+                return Position.Y - this.Taille.Height;
                 
             }
             
@@ -128,29 +83,30 @@ namespace EnVoiture
         /// <returns>retourne vrai si la voiture se trouve sur la route et false si elle ne l'est pas</returns>
         public bool DansLaRoute(Voiture voiture)
         {
+
             //si le bord gauche de la voiture dépasse le bord gauche de la route
-            if (voiture.Left<this.BordGauche)
+            if (voiture.Gauche < this.BordGauche)
             {
                 return false;
             }
             //si le bord droit de la voiture dépasse le bord droit de la route
-            if (voiture.Right > this.BordDroite)
+            if (voiture.Droite > this.BordDroite)
             {
                 return false;
             }
             //si le bord haut de la voiture dépasse le bord haut de la route
-            if (voiture.Top < this.BordHaut)
+            if (voiture.Haut < this.BordHaut)
             {
                 return false;
             }
             //si le bord bas de la voiture dépasse le bord bas de la route
-            if (voiture.Bottom > this.BordBas)
+            if (voiture.Bas > this.BordBas)
             {
                 return false;
             }
             return true;
 
-            
+
         }
         
         
@@ -172,11 +128,6 @@ namespace EnVoiture
             private set;
         }
 
-        private Route()
-        {
-
-        }
-
         /// <summary>
         /// Constructeur utilisant un x, y, largeur, hauteur et une liste d'orientations en paramètres
         /// </summary>
@@ -186,7 +137,6 @@ namespace EnVoiture
         /// <param name="height"></param>
         /// <param name="orientations"></param>
         public Route(int x, int y, int largeur, int hauteur, List<Orientation> orientations)
-            : this()
         {
             this.Position = new Point(x, y);
             this.Taille = new Size(largeur, hauteur);
@@ -201,7 +151,6 @@ namespace EnVoiture
         /// <param name="size">contient Widht et height</param>
         /// <param name="orientations"></param>
         public Route(Point position, Size taille, List<Orientation> orientations)
-            : this()
         {
             this.Position = position;
             this.Taille = taille;
@@ -214,7 +163,7 @@ namespace EnVoiture
         /// <param name="location"></param>
         /// <param name="size"></param>
         /// <param name="_orientsWays"></param>
-        public Route(Point position, Size taille, Dictionary<Orientation, Obstacle> orientationsRoutes)
+        public Route(Point position, Size taille, Dictionary<Orientation, bool> orientationsRoutes)
         {
             this.Position = position;
             this.Taille = taille;
@@ -229,15 +178,11 @@ namespace EnVoiture
         /// <summary>
         /// Get sur Dictionaire
         /// </summary>
-        public Dictionary<Orientation, Obstacle> DictionnaireObstacles
+        public Dictionary<Orientation, bool> GetDictionaire
         {
             get
             {
-                return _orientationsRoutes;
-            }
-            set
-            {
-                _orientationsRoutes = value;
+                return _orientationsRoutes == null ? new Dictionary<Orientation, bool>() : _orientationsRoutes;
             }
         }
 
@@ -252,7 +197,7 @@ namespace EnVoiture
             if (way != null)
             {
                 way.Position = new Point(x / 100, y / 100);
-                return way.Clone() as Route;
+                return way.MemberwiseClone() as Route;
             }
             return null;
         }
@@ -264,6 +209,7 @@ namespace EnVoiture
         /// <returns>Liste de Ways</returns>
         public static List<Route> Generer(int largeurVille, int hauteurVille)
         {
+            
             int nbWays = largeurVille * hauteurVille;
             List<Route> _routesVille = new List<Route>();
 
@@ -273,20 +219,19 @@ namespace EnVoiture
                     int x = n % largeurVille;
                     int y = n / largeurVille;
 
-                    Obstacle sortieN;
-                    Obstacle sortieE;
-                    Obstacle sortieS;
-                    Obstacle sortieW;
+                    bool sortieN;
+                    bool sortieE;
+                    bool sortieS;
+                    bool sortieW;
                     int icpt;
-                    Dictionary<Orientation, Obstacle> _bList = new Dictionary<Orientation, Obstacle>();
+                    Dictionary<Orientation, bool> _bList = new Dictionary<Orientation, bool>();
                     do
                     {
                         icpt = 0;
-                        int quantiteObstacles = Enum.GetNames(typeof(Obstacle)).Length;
-                        sortieN = (Obstacle)rand.Next(quantiteObstacles);
-                        sortieE = (Obstacle)rand.Next(quantiteObstacles);
-                        sortieS = (Obstacle)rand.Next(quantiteObstacles);
-                        sortieW = (Obstacle)rand.Next(quantiteObstacles);
+                        sortieN = rand.Next(2) == 0;
+                        sortieE = rand.Next(2) == 0;
+                        sortieS = rand.Next(2) == 0;
+                        sortieW = rand.Next(2) == 0;
 
                         if (x != 0)
                         {
@@ -298,39 +243,23 @@ namespace EnVoiture
                             sortieN = _routesVille[n - largeurVille]._orientationsRoutes[Orientation.SUD];
                         }
 
-                        //if (sortieE)
-                        //{
-                        //    icpt++;
-                        //}
-                        //if (sortieN)
-                        //{
-                        //    icpt++;
-                        //}
-                        //if (sortieS)
-                        //{
-                        //    icpt++;
-                        //}
-                        //if (sortieW)
-                        //{
-                        //    icpt++;
-                        //}
-                        if (sortieE != Obstacle.RIEN)
+                        if (sortieE)
                         {
                             icpt++;
                         }
-                        if (sortieN != Obstacle.RIEN)
+                        if (sortieN)
                         {
                             icpt++;
                         }
-                        if (sortieS != Obstacle.RIEN)
+                        if (sortieS)
                         {
                             icpt++;
                         }
-                        if (sortieW != Obstacle.RIEN)
+                        if (sortieW)
                         {
                             icpt++;
                         }
-                        
+
                     } while (icpt < 2);
                     _bList.Add(Orientation.NORD, sortieN);
                     _bList.Add(Orientation.EST, sortieE);
@@ -340,24 +269,6 @@ namespace EnVoiture
                     _routesVille.Add(new Route(new Point(x, y), new Size(1, 1), _bList));
             }
             return _routesVille;
-        }
-
-        internal static Route VersPositionCase(int p1, int p2, Vue.GenerateurWidget generateurWidget)
-        {
-            throw new NotImplementedException();
-        }
-
-        public object Clone()
-        {
-            Route clone = new Route();
-            clone.Position = new Point(this.Position.X, this.Position.Y);
-            clone.Taille = new Size(this.Taille.Width, this.Taille.Height);
-            clone.DictionnaireObstacles = new Dictionary<Orientation, Obstacle>();
-            foreach (Orientation orientation in this.DictionnaireObstacles.Keys)
-            {
-                clone.DictionnaireObstacles.Add(orientation, this.DictionnaireObstacles[orientation]);
-            }
-            return clone;
         }
     }
 }

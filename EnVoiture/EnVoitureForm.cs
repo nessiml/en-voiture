@@ -15,6 +15,7 @@ namespace EnVoiture
         private List<UsagerWidget> _roadUsers = new List<UsagerWidget>();
 
         Voiture voiture;
+        bool bAvancer = false, bReculer = false, bDroite = false, bGauche = false;
 
         // Liste des routes
         private List<Route> Ways = new List<Route>();
@@ -101,6 +102,24 @@ namespace EnVoiture
         private void timer_Tick(object sender, System.EventArgs e)
         {
             enVoiturePanel.Tick(sender, e);
+            foreach (UsagerWidget roadUser in _roadUsers)
+           {
+                if (roadUser is VoitureWidget)
+                {
+                    VoitureWidget voiture = roadUser as VoitureWidget;
+                    foreach (Route route in Ways)
+                    {
+
+                        if (route.DansLaRoute(voiture.Voiture))
+                        {
+                            voiture.Couleur = Color.Green;
+                            MessageBox.Show("Voiture verte");
+                       }
+                    }
+                    voiture.Couleur = Color.Red;
+                }
+            }
+
         }
         /// <summary>
         ///

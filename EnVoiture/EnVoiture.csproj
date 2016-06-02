@@ -92,7 +92,6 @@
     <EmbeddedResource Include="BoiteAOutils.resx">
       <DependentUpon>BoiteAOutils.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -108,9 +107,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controlleur\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\voiture.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
