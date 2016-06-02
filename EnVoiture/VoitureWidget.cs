@@ -35,8 +35,7 @@ namespace EnVoiture
 
         public override void Dessiner(Graphics g)
         {
-            //g.FillRectangle(Brushes.Red, Voiture.Bornes);
-            g.DrawImage(Properties.Resources.voiture, Voiture.Position);
+            g.FillRectangle(Brushes.Red, Voiture.Bornes);
         }
     }
 }

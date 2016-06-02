@@ -11,9 +11,47 @@ namespace EnVoiture
     {
         private Dictionary<Orientation, bool> _orientationsRoutes;
 
+        const int largeur = 20;
+        const int hauteur = 50;
+
         /// <summary>
         /// Location of the way
         /// </summary>
+        public int SIZE
+        {
+            get
+            {
+                return 100;
+            }  
+        }
+        public int LargeurNordSud
+        {
+            get
+            {
+                return largeur;
+            }
+        }
+        public int HauteurNordSud
+        {
+            get
+            {
+                return hauteur;
+            }
+        }
+        public int LargeurEstOuest
+        {
+            get
+            {
+                return hauteur;
+            }
+        }
+        public int HauteurEstOuest
+        {
+            get
+            {
+                return largeur;
+            }
+        }
         public Point Position
         {
             get;
@@ -54,7 +92,7 @@ namespace EnVoiture
         {
             get
             {
-                return Position.Y - this.Taille.Height;
+                return Position.Y + this.Taille.Height;
                 
             }
             
@@ -83,9 +121,8 @@ namespace EnVoiture
         /// <returns>retourne vrai si la voiture se trouve sur la route et false si elle ne l'est pas</returns>
         public bool DansLaRoute(Voiture voiture)
         {
-
             //si le bord gauche de la voiture dépasse le bord gauche de la route
-            if (voiture.Gauche < this.BordGauche)
+            if (voiture.Gauche<this.BordGauche)
             {
                 return false;
             }
@@ -106,7 +143,7 @@ namespace EnVoiture
             }
             return true;
 
-
+            
         }
         
         

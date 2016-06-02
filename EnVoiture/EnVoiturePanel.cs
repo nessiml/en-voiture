@@ -1,5 +1,4 @@
-﻿using EnVoiture.Vue;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -24,7 +23,7 @@ namespace EnVoiture
         private GraphicsPath _graphicsPath;
         private Region _region;
 
-        private List<RouteWidget> Routes;
+        private List<RouteWidget> Ways;
 
         public BoiteAOutils ToolsBox
         {
@@ -46,18 +45,19 @@ namespace EnVoiture
             roadUsers.Add(new VoitureWidget(150, 150, 10, 20, 80));
             roadUsers.Add(new VoitureWidget(240, 240, 10, 20, 80));
             voiture = (roadUsers[0] as VoitureWidget).Voiture;
-            this.Routes = new List<RouteWidget>();
-            foreach (Route route in Route.Generer(6,5))
-            {
-                Routes.Add(new RouteWidget(route));
-            }
+            this.Ways = new List<RouteWidget>();
 
             foreach (Route route in Route.Generer(6,6))
             {
-                Routes.Add(new RouteWidget(route));
+                Ways.Add(new RouteWidget(route));
             }
             this.Paint += new PaintEventHandler(EnVoiture_Paint);
-            InitializeComponent();
+
+            foreach (Route route in Route.Generer(8, 6))
+            {
+                this.Ways.Add(new RouteWidget(route));
+            }
+            
         }
 
         /// <summary>
@@ -69,20 +69,14 @@ namespace EnVoiture
         {
             Graphics g = e.Graphics;
 
-            foreach (RouteWidget way in Routes)
+            foreach (RouteWidget way in Ways)
             {
                 way.Dessiner(g);
             }
-            if (!ToolsBox.Visible)
+            foreach (UsagerWidget user in roadUsers)
             {
-                foreach (UsagerWidget user in roadUsers)
-                {
-                    user.Dessiner(g);
-                }
-
+                user.Dessiner(g);
             }
-            if (ToolsBox.Visible)
-                _hoverWayWidget.Dessiner(g, 50, Color.Black);
         }
         public void OnKeyDown(object sender, KeyEventArgs e)
         {
@@ -169,11 +163,28 @@ namespace EnVoiture
             if (ToolsBox.Visible && _hoverWayWidget != null)
             {
                 Point p = PointToClient(Cursor.Position);
-                Route r = ToolsBox.GenerateurWidget.Generateur.Route;
-                
-                _hoverWayWidget.Route = r;
                 _hoverWayWidget.Route.Position = new Point(p.X / 100, p.Y / 100);
             }
+
+            foreach (UsagerWidget roadUserWidget in roadUsers)
+            {
+                if (roadUserWidget is VoitureWidget)
+                {
+                    VoitureWidget voitureWidget = roadUserWidget as VoitureWidget;
+                    foreach (RouteWidget route in Ways)
+                    {
+
+                        if (route.Route.DansLaRoute(voitureWidget.Voiture))
+                        {
+                            voitureWidget.Couleur = Color.Green;
+                            Console.WriteLine("Voiture verte");
+                            continue;
+                        }
+                        voitureWidget.Couleur = Color.Red;
+                    }
+                }
+            }
+
             Invalidate();
         }
 
@@ -194,16 +205,7 @@ namespace EnVoiture
             {
                 Route w = Route.VersPositionCase(e.X, e.Y, ToolsBox.RouteSelectionnee);
                 if (w != null)
-                {
-                    List<RouteWidget> routes = new List<RouteWidget>();
-                    foreach (RouteWidget r in Routes)
-                    {
-                        if (r.Route.Position != w.Position)
-                            routes.Add(r);
-                    }
-                    routes.Add(new RouteWidget(w));
-                    Routes = routes;
-                }
+                    Ways.Add(new RouteWidget(w));
             }
         }
 
