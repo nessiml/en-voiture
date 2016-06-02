@@ -64,6 +64,7 @@
     <Compile Include="Pieton.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Trottoir.cs" />
     <Compile Include="Usager.cs" />
     <Compile Include="UsagerWidget.cs" />
     <Compile Include="Vue\GenerateurWidget.cs" />
@@ -104,6 +105,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\grass.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controlleur\" />
