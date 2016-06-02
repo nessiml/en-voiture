@@ -102,6 +102,26 @@ namespace EnVoiture
         {
             Point point2 = new Point(x + hauteur / 2, y + hauteur / 2);
             Pen pen;
+
+            Point point1 = Point.Empty;
+            switch (orientation)
+            {
+                case Orientation.NORD:
+                    point1 = new Point(x + largeur / 2, y);
+                    break;
+                case Orientation.EST:
+                    point1 = new Point(x + largeur, y + hauteur/ 2);
+                    break;
+                case Orientation.SUD:
+                    point1 = new Point(x + largeur / 2, y + hauteur);
+                    break;
+                case Orientation.OUEST:
+                    point1 = new Point(x, y + hauteur / 2);
+                    break;
+                default:
+                    break;
+            }
+
             switch (obstacle)
             {
                 case Obstacle.RIEN:
@@ -112,34 +132,13 @@ namespace EnVoiture
                     break;
                 case Obstacle.ROUTETROTTOIR:
                     pen = new Pen(Brushes.Blue, 20);
+                    g.DrawLine(new Pen(Color.Yellow, 30), point1, point2);
                     break;
                 default:
                     pen = new Pen(Brushes.Gainsboro, 20);
                     break;
             }
-            Point point1;
-
-            switch (orientation)
-            {
-                case Orientation.NORD:
-                    point1 = new Point(x + largeur / 2, y);
-                    g.DrawLine(pen, point1, point2);
-                    break;
-                case Orientation.EST:
-                    point1 = new Point(x + largeur, y + hauteur/ 2);
-                    g.DrawLine(pen, point1, point2);
-                    break;
-                case Orientation.SUD:
-                    point1 = new Point(x + largeur / 2, y + hauteur);
-                    g.DrawLine(pen, point1, point2);
-                    break;
-                case Orientation.OUEST:
-                    point1 = new Point(x, y + hauteur / 2);
-                    g.DrawLine(pen, point1, point2);
-                    break;
-                default:
-                    break;
-            }
+            g.DrawLine(pen, point1, point2);
         }
 
     }
